@@ -49,6 +49,7 @@ For example:
 
 ## Next steps
 
+- [Creating an extension](creating-an-extension.md)
 - [ExtensionRegistry](../platform/extension-registry.md)
 - [Core Admin pages](../core-admin/pages.md)
 - [Design Foundation](../core-admin/design-foundation.md)
