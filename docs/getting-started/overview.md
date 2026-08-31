@@ -45,4 +45,5 @@ Continue with:
 
 - [Ownership boundaries](../architecture/ownership-boundaries.md)
 - [Public vs internal API](../architecture/public-vs-internal-api.md)
+- [Using the Starter Plugin](using-the-starter.md)
 - [Creating an extension](creating-an-extension.md)
