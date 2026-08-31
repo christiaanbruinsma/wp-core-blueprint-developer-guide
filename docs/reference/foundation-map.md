@@ -106,9 +106,3 @@ For those primitives:
 Core Admin presentation and standalone WordPress-native presentation are different supported contexts.
 
 See [Presentation boundaries](../core-admin/presentation-boundaries.md).
-
-## Pre-v1 note
-
-Current Base documentation contains a wording inconsistency between `PUBLIC-API.md` and `foundation-v1-contract.md` regarding Foundation freeze status.
-
-This guide does not resolve that normative Base wording. During the pre-v1 phase, use current Base public documentation as the authority.
