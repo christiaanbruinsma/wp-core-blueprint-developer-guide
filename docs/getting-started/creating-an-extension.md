@@ -77,4 +77,4 @@ At minimum:
 - verify there are no PHP notices, missing dependencies, or early translation warnings;
 - package with the canonical plugin root folder.
 
-Continue with [Using the Starter](using-the-starter.md).
+Continue with [ExtensionRegistry](../platform/extension-registry.md).
