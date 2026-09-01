@@ -33,13 +33,15 @@ Choose and keep stable:
 
 The identity pass happens when deriving the plugin from the Starter. Release packaging must not change it later.
 
+See [Identity and compatibility](../getting-started/identity-and-compatibility.md).
+
 ## Build tooling
 
-Core Blueprint Base currently has its own release tooling and release guardrails.
+No suite-wide executable **extension** build command is currently frozen as a public/canonical platform contract.
 
-Do not assume Base's current build command is automatically the universal extension build contract. The Starter intentionally does not invent a separate release pipeline while suite-wide packaging is still being finalized.
+Do not infer one from Base-internal release tooling and do not invent a plugin-specific release pipeline and present it as a Core Blueprint guarantee.
 
-For v0.1, the canonical extension rule is the stable WordPress package identity above.
+Until the extension build contract is explicitly frozen, the canonical requirements are the stable WordPress package identity above plus the project's verified release checks.
 
 ## Release checks
 
@@ -47,6 +49,8 @@ Before creating a release archive:
 
 - run conformance checks;
 - run syntax/static checks;
-- exclude development-only files according to the project's release process;
+- exclude development-only files according to the project's verified release process;
 - verify the ZIP root and main plugin file;
 - smoke-test the packaged artifact, not only the development worktree.
+
+The packaged artifact is what ships; a clean source checkout alone is not a release PASS.
