@@ -21,13 +21,17 @@ Before feature development, replace the Starter identity consistently:
 
 First-party Core Blueprint extensions use the reserved `core-blueprint-*` namespace and keep the plugin Author header exactly `Core Blueprint`.
 
+Then narrow the Starter dependency check to the public Base contracts the derived extension actually consumes.
+
+See [Identity and compatibility](identity-and-compatibility.md).
+
 ## 2. Keep the Base dependency explicit
 
 Define the Core API version your extension requires and refuse activation when those public contracts are unavailable.
 
 If Base later disappears or becomes incompatible, the extension should remain inert. Do not create a duplicate fallback Core Admin implementation.
 
-See [Requirements](requirements.md).
+See [Requirements](requirements.md) and [Identity and compatibility](identity-and-compatibility.md).
 
 ## 3. Register canonical extension identity
 
@@ -59,9 +63,13 @@ Examples:
 
 Do not keep optional Starter examples as dormant boilerplate.
 
-## 6. Keep product logic extension-owned
+## 6. Keep product logic and composition extension-owned
 
-The extension owns its domain logic, persistence semantics, feature-specific components, workflows, and business validation.
+The extension owns its domain logic, persistence semantics, feature-specific components, workflows, business validation, and product-specific composition.
+
+Base owns shared Core Admin presentation and documented cross-suite primitives.
+
+See [Extension assets and composition](../core-admin/extension-assets.md).
 
 Base should not become a service locator for ordinary WordPress development.
 
