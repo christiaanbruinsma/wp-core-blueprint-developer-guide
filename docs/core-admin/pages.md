@@ -89,13 +89,15 @@ Unknown requirements or duplicate/reserved registrations fail safely rather than
 
 ## Page-scoped extension assets
 
-Base owns assets for the semantic requirements you declare.
+Base owns the assets for the semantic requirements declared on the page. Do not manually enqueue those same Base Foundations or depend on private `cb-core-css-*` handles.
 
 Your extension remains free to enqueue its own feature-specific CSS/JavaScript.
 
 Use `PageRegistry::hook_suffix($slug)` after WordPress menu registration to scope extension-owned assets to the exact registered page.
 
-Do not depend on a guessed `hook_suffix` pattern or private Base asset handles.
+Do not depend on a guessed `hook_suffix` pattern.
+
+For the full ownership model, see [Extension assets and composition](extension-assets.md).
 
 ## Rendering security
 

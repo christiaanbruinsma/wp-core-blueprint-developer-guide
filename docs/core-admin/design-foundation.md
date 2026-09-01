@@ -66,6 +66,8 @@ Prefer `--cb-*` tokens where practical on Core Admin pages.
 
 Do not locally redraw shared Base primitives by changing their generic colours, typography, surfaces, borders, radii, spacing, shadows, focus, hover, or semantic states.
 
+For exact asset-scoping rules and examples of the ownership boundary, see [Extension assets and composition](extension-assets.md).
+
 ## Do not depend on asset handles
 
 Private handles such as `cb-core-css-*` are not public extension API.
