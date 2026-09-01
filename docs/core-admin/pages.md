@@ -37,30 +37,11 @@ final class SettingsPage implements PageContract
         );
     }
 
-    public function slug(): string
-    {
-        return self::SLUG;
-    }
-
-    public function title(): string
-    {
-        return __('Vendor Feature', 'vendor-feature');
-    }
-
-    public function menu_title(): string
-    {
-        return __('Vendor Feature', 'vendor-feature');
-    }
-
-    public function capability(): string
-    {
-        return 'manage_options';
-    }
-
-    public function position(): ?int
-    {
-        return null;
-    }
+    public function slug(): string { return self::SLUG; }
+    public function title(): string { return __('Vendor Feature', 'vendor-feature'); }
+    public function menu_title(): string { return __('Vendor Feature', 'vendor-feature'); }
+    public function capability(): string { return 'manage_options'; }
+    public function position(): ?int { return null; }
 
     public function render(): void
     {
@@ -89,13 +70,13 @@ Unknown requirements or duplicate/reserved registrations fail safely rather than
 
 ## Page-scoped extension assets
 
-Base owns assets for the semantic requirements you declare.
+Base owns the assets for the semantic requirements declared on the page. Do not manually enqueue those same Base Foundations or depend on private `cb-core-css-*` handles.
 
-Your extension remains free to enqueue its own feature-specific CSS/JavaScript.
+An extension may enqueue its own feature-specific CSS/JavaScript. Use `PageRegistry::hook_suffix($slug)` after WordPress menu registration to scope those assets to the exact registered page.
 
-Use `PageRegistry::hook_suffix($slug)` after WordPress menu registration to scope extension-owned assets to the exact registered page.
+Do not depend on a guessed `hook_suffix` pattern.
 
-Do not depend on a guessed `hook_suffix` pattern or private Base asset handles.
+For the full ownership model, see [Extension assets and composition](extension-assets.md).
 
 ## Rendering security
 
