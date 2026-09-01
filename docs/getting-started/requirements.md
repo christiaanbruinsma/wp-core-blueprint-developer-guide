@@ -21,6 +21,8 @@ The current public API uses a `major.minor` version. Compatibility requires the 
 
 Only require a specific Base product version when the extension genuinely depends on behavior beyond the public API contract.
 
+Keep WordPress plugin identity, ExtensionRegistry identity and API compatibility separate; see [Identity and compatibility](identity-and-compatibility.md).
+
 ## Base dependency behavior
 
 A Core Blueprint extension should fail safely when compatible Base contracts are unavailable.
@@ -31,6 +33,8 @@ The canonical Starter demonstrates two distinct cases:
 - **Runtime after activation:** if Base is later deactivated or becomes incompatible, keep the extension inert and show an administrator dependency notice rather than creating a second standalone Core Admin runtime.
 
 Do not use an undocumented compatibility layer to emulate Base behavior.
+
+A derived plugin should require only the public Base contracts it actually consumes after unused Starter examples have been removed.
 
 ## Development environment
 
