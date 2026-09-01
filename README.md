@@ -20,15 +20,16 @@ A useful learning path is:
 2. [Platform ownership model](docs/architecture/ownership-boundaries.md)
 3. [Public vs internal API](docs/architecture/public-vs-internal-api.md)
 4. [Use the Starter Plugin](docs/getting-started/using-the-starter.md)
-5. [Create an extension](docs/getting-started/creating-an-extension.md)
+5. [Identity and compatibility](docs/getting-started/identity-and-compatibility.md)
 6. [Register extension identity](docs/platform/extension-registry.md)
 7. [Choose the correct admin presentation context](docs/core-admin/presentation-boundaries.md)
 8. [Add a Core Admin page](docs/core-admin/pages.md)
 9. [Use the Design Foundation](docs/core-admin/design-foundation.md)
-10. [Follow development conventions](docs/development/conventions.md)
-11. [Record governance-relevant events](docs/platform/governance-and-audit.md)
-12. [Run conformance checks](docs/distribution/conformance-testing.md)
-13. [Package the plugin correctly](docs/distribution/packaging.md)
+10. [Own extension assets and composition](docs/core-admin/extension-assets.md)
+11. [Follow development conventions](docs/development/conventions.md)
+12. [Record governance-relevant events](docs/platform/governance-and-audit.md)
+13. [Run conformance checks](docs/distribution/conformance-testing.md)
+14. [Package the plugin correctly](docs/distribution/packaging.md)
 
 ## Core principle
 
