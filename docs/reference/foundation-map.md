@@ -22,6 +22,8 @@ The current public Core Admin Design Foundation documents semantic requirements 
 - `panels`
 - `cards`
 - `metric-tiles`
+- `integration-grid`
+- `detail-rows`
 - `notices`
 - `fields`
 - `radio-cards`
@@ -38,6 +40,20 @@ The current public Core Admin Design Foundation documents semantic requirements 
 **Normative source:** Base [`docs/CORE-ADMIN-DESIGN-FOUNDATION.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/CORE-ADMIN-DESIGN-FOUNDATION.md) and current [`docs/PUBLIC-API.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/PUBLIC-API.md).
 
 Do not translate these IDs into private CSS handles.
+
+### Integration Grid
+
+Provider/integration-level readiness cards. Consumers own integration detection, meaning, labels and actions; Base owns the responsive card/grid presentation and maps the public `ready|needs-setup|optional|unavailable` states onto the shared Status primitive.
+
+**Normative source:** [`docs/INTEGRATION-GRID-FOUNDATION.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/INTEGRATION-GRID-FOUNDATION.md)
+
+### Detail Rows
+
+Compact object/target/resource rows for a consumer-owned Card or section. Consumers own row meaning/readiness/actions; Base owns row anatomy, status/action placement and responsive presentation. Detail Rows uses the existing generic Status semantics directly and does not extend Integration Grid with nested targets.
+
+**Normative source:** [`docs/DETAIL-ROWS-FOUNDATION.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/DETAIL-ROWS-FOUNDATION.md)
+
+**Guide:** [Integration and detail surfaces](../core-admin/integration-and-detail-surfaces.md)
 
 ## Behavioral Foundations with dedicated Base documents
 
