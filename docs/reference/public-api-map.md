@@ -22,11 +22,27 @@ For exact signatures, validation rules, lifecycle details, and compatibility pro
 
 **Normative source:** [Base `docs/PUBLIC-API.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/PUBLIC-API.md)
 
+## Extension configuration / Settings Hub
+
+**Use for:** contributing extension configuration to **Core Blueprint → Extensions** without adding a flat Core Blueprint submenu for every extension.
+
+**Public surface:** `CB\Core\Admin\SettingsRegistry`, `cb_core_register_settings`, `SettingsRegistry::url()`
+
+A settings provider reuses the existing `ExtensionRegistry` identity. Base derives developer identity and first-party/third-party provenance from that identity; providers cannot declare `official`, `first_party`, `developer_name` or `developer_url`. The optional `support_url` remains developer support attribution.
+
+`SettingsRegistry` is for configuration/settings. Operational queues, editors, reports, schedules and other product workflows remain in the extension's appropriate operational admin workspace.
+
+**Guide:** [Core Admin pages and extension configuration](../core-admin/pages.md)
+
+**Normative source:** [Base `docs/PUBLIC-API.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/PUBLIC-API.md) and [`docs/SETTINGS-HUB-FOUNDATION.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/SETTINGS-HUB-FOUNDATION.md)
+
 ## Core Admin pages
 
-**Use for:** contributing a page beneath the Core Blueprint admin menu.
+**Use for:** contributing a genuine operational page beneath the Core Blueprint admin menu.
 
 **Public surface:** `CB\Core\Admin\Page`, `CB\Core\Admin\PageRegistry`, `cb_core_register_pages`
+
+Configuration-only extension surfaces should use `SettingsRegistry` instead of creating a flat Core Blueprint settings page. Operational pages remain independent.
 
 **Guide:** [Core Admin pages](../core-admin/pages.md)
 
