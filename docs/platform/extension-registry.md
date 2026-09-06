@@ -30,6 +30,10 @@ Check current Base public documentation before relying on optional fields.
 
 `status_id`, when present, references the separate module status registry. It is not a second extension identity.
 
+A `SettingsRegistry` provider must reuse this same canonical extension ID. Settings registration does not create a second product identity.
+
+`menu_url` is navigation only. If the product has a genuine operational workspace, it may point there. If configuration is the meaningful destination, use the canonical `SettingsRegistry::url()` helper rather than inventing or retaining a flat Core Blueprint settings submenu.
+
 ## ID rules
 
 Current public documentation requires strict lower-case namespaced kebab-case IDs.
@@ -43,6 +47,20 @@ Duplicate IDs or duplicate plugin basename ownership are rejected rather than ov
 `requires_api` is required and uses Core API `major.minor`.
 
 A normal extension should depend on the public API contract rather than an exact Base release. Use `requires_base` only when a concrete Base product release is genuinely required beyond the public API.
+
+## Developer identity, provenance, and settings
+
+Base exposes display-safe identity metadata through the registered extension identity. `ExtensionRegistry::identity($id)` resolves developer information from the extension's WordPress plugin metadata, and Base derives first-party classification from its reserved identity rules.
+
+This distinction matters when the extension contributes configuration through `CB\Core\Admin\SettingsRegistry`:
+
+- the settings provider references the existing ExtensionRegistry ID;
+- Base owns first-party/third-party provenance presentation;
+- Base owns developer attribution presentation;
+- the provider may supply the documented optional `support_url` for developer support;
+- the provider cannot submit `official`, `first_party`, `developer_name` or `developer_url` metadata.
+
+A third-party provider therefore cannot promote itself into official Core Blueprint provenance through Settings metadata. Third-party settings surfaces remain attributed to and supported by that extension's developer, not by Core Blueprint.
 
 ## Inventory projection
 
@@ -64,4 +82,4 @@ An extension can reference a status provider, but extension identity and health 
 
 Activation/state and health are also separate: an enabled feature can be unhealthy, and a deliberately disabled feature can be healthy in the sense that its state is known.
 
-For the exact current fields and validation rules, see Base `docs/PUBLIC-API.md`.
+For the exact current fields, identity/provenance behavior, and validation rules, see Base `docs/PUBLIC-API.md` and `docs/SETTINGS-HUB-FOUNDATION.md`.

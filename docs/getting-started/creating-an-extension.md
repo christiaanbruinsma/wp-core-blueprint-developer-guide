@@ -1,6 +1,6 @@
 # Creating an extension
 
-For most new Core Blueprint extensions, start from the [Core Blueprint Extension Starter](https://github.com/christiaanbruinsma/wp-core-blueprint-starter-plugin).
+For most new Core Blueprint extensions, start from the [Core Blueprint Extension Starter](https://github.com/christiaanbruinsma/wp-core-blueprint-first-party-starter-plugin).
 
 The Starter is intentionally small. Treat it as a conformance specimen, not as a framework that every feature must retain.
 
@@ -15,7 +15,7 @@ Before feature development, replace the Starter identity consistently:
 - constant prefix;
 - PHP namespace and autoloader prefix;
 - ExtensionRegistry ID;
-- Core Admin page slug, if used;
+- Core Admin operational page slug, if used;
 - extension-owned asset handles/classes;
 - example Governance namespace/event, if governance is needed.
 
@@ -41,23 +41,29 @@ Register the active extension through `CB\Core\ExtensionRegistry` during `cb_cor
 
 The extension ID is the platform identity. The WordPress plugin basename is an inventory locator, not a second identity.
 
+When the extension contributes configuration through `SettingsRegistry`, reuse this same extension ID. Settings registration does not create a second product identity.
+
 See [ExtensionRegistry](../platform/extension-registry.md).
 
-## 4. Decide whether the feature needs Core Admin
+## 4. Choose the correct admin surface
 
-Do not assume every extension page belongs under the Core Blueprint menu.
+Do not assume every extension surface belongs in the same Core Blueprint submenu.
 
-- If the page belongs to Core Admin, use `CB\Core\Admin\Page` and `PageRegistry`.
-- If it is a standalone WordPress administration surface, keep WordPress-native presentation and opt into narrow Foundation behavior only where supported.
-- Frontend presentation remains product-owned.
+- **Configuration/settings** → use `CB\Core\Admin\SettingsRegistry` during `cb_core_register_settings`; configuration lives in **Core Blueprint → Extensions**.
+- **Genuine operational Core Admin page** → use `CB\Core\Admin\Page` and `PageRegistry` when the workflow truly belongs beneath the Core Blueprint admin menu.
+- **Standalone WordPress administration surface** → keep WordPress-native presentation and opt into narrow Foundation behavior only where supported.
+- **Frontend presentation** → remains product-owned.
 
-See [Presentation boundaries](../core-admin/presentation-boundaries.md).
+Operational queues, lists, editors, reports, schedules and other workflows do not automatically belong in Extensions merely because the product also has settings. `SettingsRegistry` is for configuration/settings, not a generic workspace registry.
+
+See [Core Admin pages](../core-admin/pages.md) and [Presentation boundaries](../core-admin/presentation-boundaries.md).
 
 ## 5. Add only the shared contracts you actually need
 
 Examples:
 
-- PageRegistry for a Core Admin page;
+- SettingsRegistry for extension configuration/settings;
+- PageRegistry for a genuine operational Core Admin page;
 - Integration Grid for provider/integration-level readiness cards;
 - Detail Rows for concrete object/target/resource rows inside a consumer-owned Card or section;
 - a Foundation runtime for a shared interaction such as modal or toast;
@@ -67,13 +73,23 @@ Examples:
 
 Do not keep optional Starter examples as dormant boilerplate.
 
+When configuration is present:
+
+- register it on `cb_core_register_settings`;
+- reuse the existing ExtensionRegistry ID;
+- use `SettingsRegistry::url()` for canonical settings/deep links;
+- do not keep a legacy flat Core Blueprint settings submenu as a compatibility alias;
+- do not submit `official`, `first_party`, `developer_name` or `developer_url` as settings-provider metadata.
+
+Base derives developer identity and first-party provenance from the extension identity. A third-party provider cannot claim Core Blueprint first-party provenance through Settings metadata. An optional provider `support_url` remains developer support attribution.
+
 When both Integration Grid and Detail Rows are present, keep their levels separate: provider readiness belongs in Integration Grid; nested setup targets/resources belong in Detail Rows. See [Integration and detail surfaces](../core-admin/integration-and-detail-surfaces.md).
 
 ## 6. Keep product logic and composition extension-owned
 
-The extension owns its domain logic, persistence semantics, feature-specific components, workflows, business validation, and product-specific composition.
+The extension owns its domain logic, persistence semantics, feature-specific components, workflows, business validation, settings fields/save behavior, and product-specific composition.
 
-Base owns shared Core Admin presentation and documented cross-suite primitives.
+Base owns shared Core Admin presentation and documented cross-suite primitives. For the Extensions settings surface, Base also owns the route/shell, provenance/developer presentation, capability filtering and shared semantic requirement resolution.
 
 See [Extension assets and composition](../core-admin/extension-assets.md).
 
@@ -88,6 +104,8 @@ At minimum:
 - test activation with compatible Base;
 - test dependency failure/inert behavior;
 - test Core Admin light and dark themes when applicable;
+- when settings are exposed, verify the provider appears under Core Blueprint → Extensions and its canonical links use `SettingsRegistry::url()`;
+- verify no obsolete flat settings submenu remains after migration;
 - when used, verify Integration Grid and Detail Rows at desktop and narrow/mobile widths;
 - verify no local CSS redraws Base-owned primitives;
 - verify there are no PHP notices, missing dependencies, or early translation warnings;
