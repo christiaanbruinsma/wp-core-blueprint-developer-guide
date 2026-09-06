@@ -25,11 +25,12 @@ A useful learning path is:
 7. [Choose the correct admin presentation context](docs/core-admin/presentation-boundaries.md)
 8. [Add a Core Admin page](docs/core-admin/pages.md)
 9. [Use the Design Foundation](docs/core-admin/design-foundation.md)
-10. [Own extension assets and composition](docs/core-admin/extension-assets.md)
-11. [Follow development conventions](docs/development/conventions.md)
-12. [Record governance-relevant events](docs/platform/governance-and-audit.md)
-13. [Run conformance checks](docs/distribution/conformance-testing.md)
-14. [Package the plugin correctly](docs/distribution/packaging.md)
+10. [Use Integration Grid and Detail Rows at the correct level](docs/core-admin/integration-and-detail-surfaces.md)
+11. [Own extension assets and composition](docs/core-admin/extension-assets.md)
+12. [Follow development conventions](docs/development/conventions.md)
+13. [Record governance-relevant events](docs/platform/governance-and-audit.md)
+14. [Run conformance checks](docs/distribution/conformance-testing.md)
+15. [Package the plugin correctly](docs/distribution/packaging.md)
 
 ## Core principle
 
