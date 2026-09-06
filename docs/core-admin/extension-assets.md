@@ -32,6 +32,12 @@ PageRegistry::register(
 );
 ```
 
+A page that genuinely renders integration readiness and resource/detail rows may instead include semantic requirements such as:
+
+```php
+'components' => [ 'cards', 'integration-grid', 'detail-rows' ],
+```
+
 Do not manually enqueue Base Foundation assets on the same page when `PageRegistry` can own them declaratively.
 
 Do not depend on private Base handles such as `cb-core-css-*`, CSS filenames, internal bundles or `AdminAssetCatalog`.
@@ -60,13 +66,14 @@ Do not guess WordPress hook suffixes and do not load feature assets across all C
 
 Typical extension-owned composition includes:
 
-- product grids;
+- product grids that position complete Base primitives;
 - workflow layout;
 - table/grid track distribution for feature-specific data views;
 - preview dimensions;
 - product-specific toolbar arrangement;
 - feature-specific cards or visualizations that are not Base semantic components;
-- responsive composition for the product workflow.
+- domain-specific guidance around Base components;
+- responsive composition for the product workflow outside Base-owned component internals.
 
 On Core Admin pages, use `--cb-*` tokens where practical so product composition follows the shared visual language without copying Base styling.
 
@@ -92,6 +99,8 @@ Do not locally redraw:
 - panels;
 - notices;
 - shared cards;
+- Integration Grid card surfaces, internal spacing, status/CTA placement or responsive card geometry;
+- Detail Rows spacing, separators, status/CTA placement or mobile stacking;
 - badges/state badges;
 - focus rings;
 - shared semantic colours/states;
@@ -106,6 +115,22 @@ Do not force every recurring shape into Base.
 A feature-specific fleet table, KPI visualization, deployment workflow or domain-specific control may stay extension-owned when its semantics are product-specific. It should still consume Base tokens/shared primitives where appropriate.
 
 Before requesting a new Base primitive, ask whether the concept is genuinely reusable platform language or merely one product's composition.
+
+## Integration and detail boundary
+
+When a page presents both provider readiness and concrete setup/resource details, keep the two levels separate:
+
+```text
+provider / integration
+→ IntegrationGrid
+
+concrete object / target / resource
+→ DetailRows inside a consumer-owned Card or section
+```
+
+Do not create local provider cards beside Base Integration Grid cards and do not recreate Detail Rows with extension-owned row CSS. Product-specific guidance around either primitive remains extension-owned.
+
+See [Integration and detail surfaces](integration-and-detail-surfaces.md).
 
 ## Modal boundary
 
@@ -129,6 +154,8 @@ For a Core Admin page:
 - verify only required Base primitives are loaded;
 - verify extension assets load only on their exact page;
 - inspect common inputs/buttons/tabs/panels for local redraws;
+- when used, verify Integration Grid remains provider-level and Detail Rows remains object/target/resource-level;
+- verify no local CSS redraws Base-owned integration cards or detail rows;
 - test responsive/product-specific layout separately from Base presentation;
 - verify removing/hiding product content does not leave layout gaps caused by extension-owned grid tracks.
 
