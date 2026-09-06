@@ -12,6 +12,8 @@ Examples include:
 
 - panels;
 - cards;
+- integration grid;
+- detail rows;
 - notices;
 - fields;
 - nav tabs;
@@ -33,6 +35,17 @@ semantic component ID
 ```
 
 Base may change CSS filenames, handles, bundle boundaries, or internal asset organization while preserving the semantic contract.
+
+### Integration-level versus detail-level surfaces
+
+`integration-grid` and `detail-rows` are intentionally separate semantic components.
+
+- `integration-grid` represents provider/integration-level readiness.
+- `detail-rows` represents concrete object/target/resource details inside a consumer-owned Card or section.
+
+Do not model nested setup targets as fake Integration Grid entries and do not extend Integration Grid with target/domain semantics. Detail Rows does not render its own outer Card.
+
+See [Integration and detail surfaces](integration-and-detail-surfaces.md) for the teaching pattern and the current Base Foundation documents for normative behavior.
 
 ## 2. Behavioral Foundations
 
@@ -56,15 +69,16 @@ For example, `cb-core-stack` owns vertical spacing between direct siblings. Chil
 
 An extension may own:
 
-- grids;
+- grids that position complete Base primitives;
 - workflow layout;
 - feature-specific preview sizing;
 - product-specific components;
-- layout constraints.
+- layout constraints;
+- domain-specific guidance around Base primitives.
 
 Prefer `--cb-*` tokens where practical on Core Admin pages.
 
-Do not locally redraw shared Base primitives by changing their generic colours, typography, surfaces, borders, radii, spacing, shadows, focus, hover, or semantic states.
+Do not locally redraw shared Base primitives by changing their generic colours, typography, surfaces, borders, radii, spacing, shadows, focus, hover, or semantic states. For Integration Grid and Detail Rows this also includes internal card/row geometry, status placement, CTA placement and responsive stacking.
 
 For exact asset-scoping rules and examples of the ownership boundary, see [Extension assets and composition](extension-assets.md).
 

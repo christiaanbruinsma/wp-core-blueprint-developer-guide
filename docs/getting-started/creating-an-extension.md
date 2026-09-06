@@ -29,7 +29,9 @@ See [Identity and compatibility](identity-and-compatibility.md).
 
 Define the Core API version your extension requires and refuse activation when those public contracts are unavailable.
 
-If Base later disappears or becomes incompatible, the extension should remain inert. Do not create a duplicate fallback Core Admin implementation.
+Runtime readiness should also fail closed when a concrete documented public contract the product actually consumes is unavailable. Prefer API-family compatibility plus required public capability checks over pinning runtime behavior to an internal RC number.
+
+If Base later disappears or becomes incompatible, the extension should remain inert. Do not create a duplicate fallback Core Admin implementation or a local legacy replacement for a required Base Foundation.
 
 See [Requirements](requirements.md) and [Identity and compatibility](identity-and-compatibility.md).
 
@@ -56,12 +58,16 @@ See [Presentation boundaries](../core-admin/presentation-boundaries.md).
 Examples:
 
 - PageRegistry for a Core Admin page;
+- Integration Grid for provider/integration-level readiness cards;
+- Detail Rows for concrete object/target/resource rows inside a consumer-owned Card or section;
 - a Foundation runtime for a shared interaction such as modal or toast;
 - module status when a useful health projection exists;
 - Governance for meaningful mutations;
 - SchemaRegistry only when a custom table is genuinely appropriate.
 
 Do not keep optional Starter examples as dormant boilerplate.
+
+When both Integration Grid and Detail Rows are present, keep their levels separate: provider readiness belongs in Integration Grid; nested setup targets/resources belong in Detail Rows. See [Integration and detail surfaces](../core-admin/integration-and-detail-surfaces.md).
 
 ## 6. Keep product logic and composition extension-owned
 
@@ -82,6 +88,8 @@ At minimum:
 - test activation with compatible Base;
 - test dependency failure/inert behavior;
 - test Core Admin light and dark themes when applicable;
+- when used, verify Integration Grid and Detail Rows at desktop and narrow/mobile widths;
+- verify no local CSS redraws Base-owned primitives;
 - verify there are no PHP notices, missing dependencies, or early translation warnings;
 - package with the canonical plugin root folder.
 
