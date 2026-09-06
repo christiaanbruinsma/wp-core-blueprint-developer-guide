@@ -21,6 +21,10 @@ The current public API uses a `major.minor` version. Compatibility requires the 
 
 Only require a specific Base product version when the extension genuinely depends on behavior beyond the public API contract.
 
+Runtime readiness should then verify the concrete documented public contracts the extension actually consumes. This keeps compatibility precise: the API family establishes the supported platform line, while required renderer/registry/foundation entrypoints establish that the capabilities used by the product are present.
+
+Do not use `CB_CORE_VERSION` as a substitute for checking a documented required capability merely because an internal RC first introduced it.
+
 Keep WordPress plugin identity, ExtensionRegistry identity and API compatibility separate; see [Identity and compatibility](identity-and-compatibility.md).
 
 ## Base dependency behavior
@@ -29,10 +33,10 @@ A Core Blueprint extension should fail safely when compatible Base contracts are
 
 The canonical Starter demonstrates two distinct cases:
 
-- **Activation time:** refuse activation when the required Base API is unavailable.
+- **Activation time:** refuse activation when the required Base API/contracts are unavailable.
 - **Runtime after activation:** if Base is later deactivated or becomes incompatible, keep the extension inert and show an administrator dependency notice rather than creating a second standalone Core Admin runtime.
 
-Do not use an undocumented compatibility layer to emulate Base behavior.
+Do not use an undocumented compatibility layer to emulate Base behavior, and do not revive local legacy presentation when a required shared Foundation is missing.
 
 A derived plugin should require only the public Base contracts it actually consumes after unused Starter examples have been removed.
 
