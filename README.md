@@ -22,21 +22,26 @@ A useful learning path is:
 4. [Use the Starter Plugin](docs/getting-started/using-the-starter.md)
 5. [Identity and compatibility](docs/getting-started/identity-and-compatibility.md)
 6. [Register extension identity](docs/platform/extension-registry.md)
-7. [Choose the correct admin presentation context](docs/core-admin/presentation-boundaries.md)
-8. [Add a Core Admin page](docs/core-admin/pages.md)
-9. [Use the Design Foundation](docs/core-admin/design-foundation.md)
-10. [Use Integration Grid and Detail Rows at the correct level](docs/core-admin/integration-and-detail-surfaces.md)
-11. [Own extension assets and composition](docs/core-admin/extension-assets.md)
-12. [Follow development conventions](docs/development/conventions.md)
-13. [Record governance-relevant events](docs/platform/governance-and-audit.md)
-14. [Run conformance checks](docs/distribution/conformance-testing.md)
-15. [Package the plugin correctly](docs/distribution/packaging.md)
+7. [Expose automation capabilities through Automation Foundation](docs/platform/automation-foundation.md)
+8. [Choose the correct admin presentation context](docs/core-admin/presentation-boundaries.md)
+9. [Add a Core Admin page](docs/core-admin/pages.md)
+10. [Use the Design Foundation](docs/core-admin/design-foundation.md)
+11. [Use Integration Grid and Detail Rows at the correct level](docs/core-admin/integration-and-detail-surfaces.md)
+12. [Own extension assets and composition](docs/core-admin/extension-assets.md)
+13. [Follow development conventions](docs/development/conventions.md)
+14. [Record governance-relevant events](docs/platform/governance-and-audit.md)
+15. [Run conformance checks](docs/distribution/conformance-testing.md)
+16. [Package the plugin correctly](docs/distribution/packaging.md)
 
 ## Core principle
 
 > **Base owns the language. Extensions own the sentence.**
 
 Base owns shared platform contracts, validation, shared semantics, and shared presentation boundaries. Extensions own their product/domain logic, workflows, feature-specific composition, persistent product data, and uninstall policy.
+
+For Automation Foundation specifically, this becomes:
+
+> **Extensions own business semantics. Base owns interoperability. Automations owns orchestration.**
 
 ## Canonical repositories
 
