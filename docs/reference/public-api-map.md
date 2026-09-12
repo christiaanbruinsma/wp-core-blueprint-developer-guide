@@ -22,6 +22,16 @@ For exact signatures, validation rules, lifecycle details, and compatibility pro
 
 **Normative source:** [Base `docs/PUBLIC-API.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/PUBLIC-API.md)
 
+## Generic interoperability
+
+**Use for:** defining, implementing, discovering and resolving versioned cross-extension domain contracts without depending on one concrete provider.
+
+**Public surface:** `CB\Core\Interoperability\Registry`, `cb_core_register_interoperability_contracts`, `cb_core_register_interoperability_implementations`
+
+**Guide:** [Interoperability Foundation](../platform/interoperability-foundation.md)
+
+**Normative source:** [Base `docs/PUBLIC-API.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/PUBLIC-API.md) and [`docs/INTEROPERABILITY-FOUNDATION.md`](https://github.com/christiaanbruinsma/wp-core-blueprint/blob/main/docs/INTEROPERABILITY-FOUNDATION.md)
+
 ## Extension configuration / Settings Hub
 
 **Use for:** contributing extension configuration to **Core Blueprint → Extensions** without adding a flat Core Blueprint submenu for every extension.
